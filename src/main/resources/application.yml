@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: food-recipes
+  datasource:
+    url: jdbc:postgresql://localhost:5433/food_recipes
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+  sql:
+    init:
+      mode: always
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    properties:
+      org:
+        hibernate:
+          envers:
+            default_schema: audit
+server:
+  servlet:
+    context-path: /api
+  port: 8888
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    path: /swagger-ui/index.html
